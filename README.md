@@ -2,6 +2,7 @@
 
 A modern test library & runner toolkit for mruby
 
+![status badge](https://github.com/skinnyjames/mruby-bin-theorem/actions/workflows/test.yml/badge.svg)
 ## basic usage
 
 ```ruby

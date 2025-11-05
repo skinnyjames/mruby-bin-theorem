@@ -88,16 +88,23 @@ module Matchers
     def initialize(ctx, block)
       @ctx = ctx
       @expected = block
+      @error = "Nothing raised"
     end
     
     def match(actual)
       begin
         actual.call
 
+        @error = "Nothing was raised"
         return false
-      rescue StandardError => ex
-        return @ctx.instance_exec(ex, &@expected) unless @expected.nil?
+      rescue Exception => ex
+        obj = @ctx.instance_exec(ex, &@expected) unless @expected.nil?
+        return true if obj.nil?
       end
+    end
+
+    def error(actual)
+      @error
     end
   end
 

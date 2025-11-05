@@ -1,3 +1,4 @@
 mruby/
 tmp/
 .vscode/
+build_config.rb.lock

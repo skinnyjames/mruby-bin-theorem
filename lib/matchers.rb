@@ -1,10 +1,12 @@
 module Matchers
   class Expect
+    attr_reader :actual
+
     def initialize(actual)
       @actual = actual
     end
 
-    def to(matcher, error = "Assertion failed for #{matcher.class}")
+    def to(matcher, error = matcher.error(actual))
       raise StandardError.new(error) unless matcher.match(@actual)
     end
 
@@ -41,17 +43,44 @@ module Matchers
     def match(actual)
       @expected.object_id == actual.object_id
     end
+
+    def error(actual)
+      "#{actual.class}.object_id(#{actual.object_id}) does not equal #{@expected.class}.object_id(#{@expected.object_id})"
+    end
+  end
+
+  class Match < MatchBase
+    def match(actual)
+      @expected =~ actual
+    end
+
+    def error(actual)
+      "#{actual.inspect} does not match #{@expected.inspect}"
+    end
   end
 
   class Eql < MatchBase
     def match(actual)
       @expected == actual
     end
+
+    def error(actual)
+      "#{actual.inspect} does not equal #{@expected.inspect}"
+    end
   end
 
   class Include < MatchBase
     def match(actual)
-      actual.include?(@expected)
+      case @expected
+      when Array
+        (@expected - actual).size.zero?
+      else
+        actual.include?(@expected)
+      end
+    end
+
+    def error(actual)
+      "#{actual.inspect} does not include #{@expected.inspect}"
     end
   end
 
@@ -91,6 +120,10 @@ module Matchers
     else
       Expect.new(actual)
     end
+  end
+
+  def match(expected)
+    Match.new(expected)
   end
 
   def eql(expected)

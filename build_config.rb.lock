@@ -5,28 +5,23 @@ mruby:
   git_commit: eb398971bfb43c38db3e04528b68ac9a7ce509bc
 builds:
   host:
-    https://github.com/gromnitsky/mruby-dir-glob.git:
-      url: https://github.com/gromnitsky/mruby-dir-glob.git
-      branch: master
-      commit: 334c040a2e2c4c2689f8c3440168011f64d57ada
-      version: 0.0.1
     https://github.com/ksss/mruby-file-stat.git:
       url: https://github.com/ksss/mruby-file-stat.git
       branch: master
       commit: 7d0e63a95a38b34c635b708874ec624c7c860507
       version: 0.0.0
-    https://github.com/iij/mruby-process.git:
-      url: https://github.com/iij/mruby-process.git
+    https://github.com/gromnitsky/mruby-dir-glob.git:
+      url: https://github.com/gromnitsky/mruby-dir-glob.git
       branch: master
-      commit: 95da206a5764f4e80146979b8e35bd7a9afd6850
-      version: 0.0.0
-    https://github.com/WindProphet/mruby-pure-regexp.git:
-      url: https://github.com/WindProphet/mruby-pure-regexp.git
-      branch: master
-      commit: 9cee46e9afeaa18001467a1a25ea6c9d88612287
-      version: 0.0.0
+      commit: 334c040a2e2c4c2689f8c3440168011f64d57ada
+      version: 0.0.1
     https://github.com/iij/mruby-regexp-pcre.git:
       url: https://github.com/iij/mruby-regexp-pcre.git
       branch: master
       commit: 71bd16ba59239f04aefb73bb6d46d5b581f27b1b
+      version: 0.0.0
+    https://github.com/iij/mruby-process.git:
+      url: https://github.com/iij/mruby-process.git
+      branch: master
+      commit: 95da206a5764f4e80146979b8e35bd7a9afd6850
       version: 0.0.0
